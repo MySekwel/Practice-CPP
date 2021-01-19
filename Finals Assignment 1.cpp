@@ -1,5 +1,4 @@
 #include <iostream>
-
 // - Global Variable Declaration
 int
     customer = 1,
@@ -22,8 +21,10 @@ int main(){
     longLine(2);
     std::cout<< "\t\t\t\t\tPHOTOBOOK STORE:\n"; // Title
     longLine(2);
+
     bookCost[0]   = 600.00; bookCost[1]   = 2000.00; bookCost[2]   = 3000.00;                                   // - Price of Bundle
     bookCharge[0] = bookCost[0] / 100; bookCharge[1] = bookCost[1] / 250; bookCharge[2] = bookCost[2] / 250;    // - Additional Charge Price
+
     std::cout<< "\nWelcome to Photobook Store Customer#:" << customer << std::endl << std::endl; // Welcome customer message
     std::cout<< "SELECT BOOK SIZE\n";
     std::cout<< "1 - 6\" x 6\"\t" <<   bookCost[0] <<" (21 Photos plus " << bookCharge[0] << " for every additional photos)\n"; // - Bundle price for photo size 6 x 6
@@ -36,30 +37,29 @@ int main(){
         additionalPhotos = 0;
     // - Input Processing
     std::cout<< "BOOK SIZE(Press 1, 2, or 3): "; std::cin>> bookSize;
+
     if(bookSize >= 1 && bookSize <= 3){
         std::cout<< "HOW MANY PHOTOS? "; std::cin>> photosAmount;
         if(photosAmount >= 21){
             additionalPhotos = photosAmount - 21;
             std::cout<< "Customer # " << customer << std::endl;
             std::cout<< "----------------------------------------------\n";
-            for(int i = 0; i < 3; i++){
-                switch (bookSize)
-                {
-                    case 1: std::cout<< "6\" x 6\" Photobook\n"; break;
-                    case 2: std::cout<< "8\" x 8\" Photobook\n"; break;
-                    case 3: std::cout<< "12\" x 12\" Photobook\n"; break;
-                    default: break;
-                }
-                float amountDue;
-                bookCharged[i] = additionalPhotos * bookCharge[i];
-                amountDue += bookCharged[i];
-                
-                std::cout<< photosAmount << " with " << additionalPhotos << " additional Photos\n";
-                std::cout<< "Additional Charge is: " << bookCharged[i] << std::endl << std::endl;
-                std::cout<< "AMOUNT DUE: " << bookCost[i] + amountDue << std::endl;
+            for(int i = 0, ii = 1; i < 3; i++, ii++){
+                if(bookSize == ii){
+                    if(bookSize == 1) std::cout<< "6\" x 6\" Photobook\n";
+                    if(bookSize == 2) std::cout<< "8\" x 8\" Photobook\n";
+                    if(bookSize == 3) std::cout<< "12\" x 12\" Photobook\n";
+                    float amountDue;
+                    bookCharged[i] = additionalPhotos * bookCharge[i];
+                    amountDue += bookCharged[i];
+                    
+                    std::cout<< photosAmount << " with " << additionalPhotos << " additional Photos\n";
+                    std::cout<< "Additional Charge is: " << bookCharged[i] << std::endl << std::endl;
+                    std::cout<< "AMOUNT DUE: " << bookCost[i] + amountDue << std::endl;
 
-                total += amountDue + bookCost[i];
-                amountDue = 0;
+                    total += amountDue + bookCost[i];
+                    amountDue = 0;
+                }
             }
             std::cout<< "----------------------------------------------\n";
             std::cout<< "NEW CUSTOMER(1 - YES): "; std::cin>> newCustomer;
