@@ -37,7 +37,6 @@ int main(){
         additionalPhotos = 0;
     // - Input Processing
     std::cout<< "BOOK SIZE(Press 1, 2, or 3): "; std::cin>> bookSize;
-
     if(bookSize >= 1 && bookSize <= 3){
         std::cout<< "HOW MANY PHOTOS? "; std::cin>> photosAmount;
         if(photosAmount >= 21){
@@ -66,6 +65,7 @@ int main(){
             if(newCustomer == 1){
                 do{
                     system("cls");
+                    customer++;
                     goto MENU;
                     newCustomer++;
                 } while(newCustomer < 1);
