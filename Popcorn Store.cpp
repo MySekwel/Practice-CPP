@@ -10,21 +10,25 @@ char newCustomer;
 
 std::vector<int> order_size;
 std::vector<int> order_flavor;
-std::vector<int> customer_total(1);
+std::vector<int> customer_total;
 
 #define PRICE_SMALL         50.0
 #define PRICE_MEDIUM        75.0
 #define PRICE_LARGE         100.0
 #define PRICE_EXTRALARGE    120.0
 
-#define PRICE_CHEESE        50.0
-#define PRICE_BBQ           50.0
-#define PRICE_SOURCREAM     50.0
+#define PRICE_CHEESE        10.0
+#define PRICE_BBQ           10.0
+#define PRICE_SOURCREAM     10.0
 #define PRICE_NONE          0.0
 
 int main(){
-    while (true)
-    {
+
+    while (true){
+        customer++;
+        customer_total.push_back(customer);
+        customer_total[customer] = 0;
+
         std::cout<<"O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O\n";
         std::cout<<"|\t\tPOP-CORN STORE\t\t|\n";
         std::cout<<"O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O-O\n";
@@ -49,19 +53,28 @@ int main(){
             std::cout<<"Order#"<<i+1<<":\n";
             std::cout<<"\t\tSize: "; std::cin>>order_size[i];
             std::cout<<"\t\tFlavor: "; std::cin>>order_flavor[i];
-
-            customer_total[customer];
+            if(order_size[i] == 1){
+                customer_total[customer] += PRICE_SMALL+10;
+            }
+            else if(order_size[i] == 2){
+                customer_total[customer] += PRICE_MEDIUM+10;
+            }
+            else if(order_size[i] == 3){
+                customer_total[customer] += PRICE_LARGE+10;
+            }
+            else if(order_size[i] == 4){
+                customer_total[customer] += PRICE_EXTRALARGE+10;
+            }
         }
         std::cout<<"TOTAL AMOUNT FOR CUSTOMER#"<<customer<<": "<<customer_total[customer]<<std::endl;
         std::cout<<"----------------------------\n";
-        customer++;
-        customer_total.push_back(customer);
         std::cout<<"NEW CUSTOMER? "; std::cin>>newCustomer;
         system("cls");
         if(newCustomer == 'Y' || newCustomer == 'y'){
             continue;
         }
         else{
+            std::cout<<customer_total[2]<<std::endl;
             break;
         }
     }
