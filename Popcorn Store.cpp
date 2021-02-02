@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 int
-    customer = 1,
+    customer,
     orders;
 
 char newCustomer;
@@ -74,7 +74,6 @@ int main(){
             continue;
         }
         else{
-            std::cout<<customer_total[2]<<std::endl;
             break;
         }
     }
