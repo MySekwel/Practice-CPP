@@ -53,17 +53,17 @@ int main(){
             std::cout<<"Order#"<<i+1<<":\n";
             std::cout<<"\t\tSize: "; std::cin>>order_size[i];
             std::cout<<"\t\tFlavor: "; std::cin>>order_flavor[i];
-            if(order_size[i] == 1){
-                customer_total[customer] += PRICE_SMALL+10;
+            if(order_flavor[i] == 1 || order_flavor[i] == 2 || order_flavor[i] == 3){
+                if(order_size[i] == 1) customer_total[customer] += PRICE_SMALL+10;
+                else if(order_size[i] == 2)customer_total[customer] += PRICE_MEDIUM+10;
+                else if(order_size[i] == 3) customer_total[customer] += PRICE_LARGE+10;
+                else if(order_size[i] == 4) customer_total[customer] += PRICE_EXTRALARGE+10;
             }
-            else if(order_size[i] == 2){
-                customer_total[customer] += PRICE_MEDIUM+10;
-            }
-            else if(order_size[i] == 3){
-                customer_total[customer] += PRICE_LARGE+10;
-            }
-            else if(order_size[i] == 4){
-                customer_total[customer] += PRICE_EXTRALARGE+10;
+            else{
+                if(order_size[i] == 1) customer_total[customer] += PRICE_SMALL;
+                else if(order_size[i] == 2) customer_total[customer] += PRICE_MEDIUM;
+                else if(order_size[i] == 3) customer_total[customer] += PRICE_LARGE;
+                else if(order_size[i] == 4) customer_total[customer] += PRICE_EXTRALARGE;
             }
         }
         std::cout<<"TOTAL AMOUNT FOR CUSTOMER#"<<customer<<": "<<customer_total[customer]<<std::endl;
