@@ -4,7 +4,8 @@
 #include <vector>
 int
     customer,
-    orders;
+    orders,
+    total;
 
 char newCustomer;
 
@@ -42,7 +43,7 @@ int main(){
         std::cout<<"Flavor:\n";
         std::cout<<"1 - Cheese\t\t"         <<PRICE_CHEESE     <<std::endl;
         std::cout<<"2 - Barbecue\t\t"       <<PRICE_BBQ        <<std::endl;
-        std::cout<<"3 - Sour and Cream\t" <<PRICE_SOURCREAM  <<std::endl;
+        std::cout<<"3 - Sour and Cream\t"   <<PRICE_SOURCREAM  <<std::endl;
         std::cout<<"4 - None\t\t"           <<PRICE_NONE       <<std::endl;
 
         std::cout<<"HOW MANY ORDERS? "; std::cin>>orders;
@@ -65,6 +66,7 @@ int main(){
                 else if(order_size[i] == 3) customer_total[customer] += PRICE_LARGE;
                 else if(order_size[i] == 4) customer_total[customer] += PRICE_EXTRALARGE;
             }
+            total += customer_total[customer];
         }
         std::cout<<"TOTAL AMOUNT FOR CUSTOMER#"<<customer<<": "<<customer_total[customer]<<std::endl;
         std::cout<<"----------------------------\n";
@@ -74,6 +76,9 @@ int main(){
             continue;
         }
         else{
+            std::cout<<"==========================================\n";
+            std::cout<<"||\tTOTAL AMOUNT SALES: "<< total << "\t\t||\n";
+            std::cout<<"==========================================\n";
             break;
         }
     }
