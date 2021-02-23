@@ -113,7 +113,7 @@ int main(){
         border();
         std::cout<< "TOTAL HOURS\n";
         for(int i = 0; i < MAX_WEEKS; i++){
-            std::cout<< "Week " << i + 1 << ": "; std::cin>> week[i];
+            std::cout<< "\tWeek " << i + 1 << ": "; std::cin>> week[i];
         }
 
         //========================================
